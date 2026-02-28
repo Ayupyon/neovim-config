@@ -1,0 +1,4 @@
+return {
+  name = "cssls",
+  config = {},
+}
