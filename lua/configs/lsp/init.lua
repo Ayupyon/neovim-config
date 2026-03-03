@@ -44,6 +44,7 @@ local configs = {
   "css",
   "python",
   "typst",
+  "go",
 }
 
 local prefix = "configs.lsp."
