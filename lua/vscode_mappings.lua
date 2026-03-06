@@ -3,7 +3,6 @@ local vscode = require('vscode')
 
 -- 1. 基础编辑体验增强
 map('n', 'x', '"_x') -- x 不删入剪贴板
--- map('i', 'jk', '<ESC>') -- jk退出编辑模式 -- 这个需要在vscode中设置
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
 -- 2. 调用 VSCode 原生功能 (替代复杂的 Vim 插件)
@@ -21,4 +20,7 @@ map('n', '<leader>f', function() vscode.action('editor.action.formatDocument') e
 map('n', '<leader>nb', function() vscode.action('workbench.action.navigateBack') end)
 -- 向前跳转
 map('n', '<leader>nf', function() vscode.action('workbench.action.navigateForward') end)
-
+-- 查看实现
+map('n', 'gi', function() vscode.action('editor.action.goToImplementation') end)
+-- 浮动窗口查看实现
+map('n', 'gI', function() vscode.action('editor.action.peekImplementation') end)
