@@ -4,6 +4,8 @@ local vscode = require('vscode')
 -- 1. 基础编辑体验增强
 map('n', 'x', '"_x') -- x 不删入剪贴板
 map("n", ";", ":", { desc = "CMD enter command mode" })
+-- ESC退出搜索高亮
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- 2. 调用 VSCode 原生功能 (替代复杂的 Vim 插件)
 -- 快速搜索文件
