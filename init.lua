@@ -1,9 +1,9 @@
 vim.g.mapleader = " "
 
 if vim.g.vscode then
-  require "vscode.options"
+  require "configs.vscode.options"
   vim.schedule(function()
-    require "vscode.mappings"
+    require "configs.vscode.mappings"
   end)
 else
   vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
