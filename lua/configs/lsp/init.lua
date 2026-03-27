@@ -25,6 +25,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end,
       })
     end
+
+    if client.server_capabilities.semanticTokensProvider then
+      client.server_capabilities.semanticTokensProvider = {
+        full = true,
+        legend = client.server_capabilities.semanticTokensProvider.legend,
+        range = true,
+      }
+    end
   end,
 })
 

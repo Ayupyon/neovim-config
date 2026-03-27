@@ -20,7 +20,7 @@ return {
     opts = function()
       local mod = require "configs.lsp.init"
       return {
-        ensure_installed = mod.ensure_installed,
+        -- ensure_installed = mod.ensure_installed,
       }
     end,
   },
