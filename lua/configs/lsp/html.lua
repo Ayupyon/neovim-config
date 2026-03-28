@@ -1,4 +1,13 @@
 return {
   name = "html",
-  config = {},
+  config = {
+    settings = {
+      html = {
+        -- Enable semantic tokens (default for cssls/html, but explicitly set)
+        suggest = {
+          autoTags = true,
+        },
+      },
+    },
+  },
 }

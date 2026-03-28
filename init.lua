@@ -1,14 +1,15 @@
-vim.g.mapleader = " "
+local function set_leader()
+  vim.g.mapleader = " "
+end
 
-if vim.g.vscode then
+local function set_vscode()
   require "configs.vscode.options"
   vim.schedule(function()
     require "configs.vscode.mappings"
   end)
-else
-  vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
+end
 
-  -- bootstrap lazy and all plugins
+local function set_lazy()
   local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
   if not vim.uv.fs_stat(lazypath) then
@@ -19,28 +20,22 @@ else
   vim.opt.rtp:prepend(lazypath)
 
   local lazy_config = require "configs.lazy"
-
-  -- load plugins
   require("lazy").setup({
-    {
-      "NvChad/NvChad",
-      lazy = false,
-      branch = "v2.5",
-      import = "nvchad.plugins",
-    },
-
-    { import = "plugins" },
+    spec = { import = "plugins" },
   }, lazy_config)
+end
 
-  -- load theme
-  dofile(vim.g.base46_cache .. "defaults")
-  dofile(vim.g.base46_cache .. "statusline")
+set_leader()
+
+if vim.g.vscode then
+  set_vscode()
+else
+  set_lazy()
 
   require "options"
-  require "autocmds"
+  require "tab"
 
   vim.schedule(function()
     require "mappings"
   end)
 end
-

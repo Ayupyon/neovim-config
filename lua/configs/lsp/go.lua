@@ -1,4 +1,11 @@
 return {
   name = "gopls",
-  config = {},
+  config = {
+    settings = {
+      gopls = {
+        -- Enable semantic tokens
+        semanticTokens = true,
+      },
+    },
+  },
 }
