@@ -11,9 +11,9 @@ map("i", "<C-_>", "<Esc>gcc^i", { desc = "comment toggle", remap = true })
 map("v", "<C-_>", "gc", { desc = "comment toggle", remap = true })
 
 -- Clipboard mappings for SSH (y to system clipboard)
-map({ "n", "v" }, "y", '"+y', { desc = "yank to system clipboard" })
-map("n", "yy", '"+yy', { desc = "yank line to system clipboard" })
-map("v", "Y", '"+Y', { desc = "yank to system clipboard" })
+-- map({ "n", "v" }, "y", '"+y', { desc = "yank to system clipboard" })
+-- map("n", "yy", '"+yy', { desc = "yank line to system clipboard" })
+-- map("v", "Y", '"+Y', { desc = "yank to system clipboard" })
 
 map("n", "gb", "<C-o>", { desc = "jump back" })
 map("n", "gf", "<C-i>", { desc = "jump forward" })
