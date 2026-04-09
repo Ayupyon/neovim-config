@@ -3,7 +3,9 @@ return {
   config = {
     settings = {
       formatterMode = "typstyle",
-      semanticTokens = "disable",
+      formatterProseWrap = true,
+      formatterPrintWidth = 80,
+      formatterIndentSize = 2,
     }
   }
 }

@@ -18,10 +18,11 @@ return {
           'html',
           'css',
           'json',
-          'yaml'
+          'yaml',
+          'typst',
         },
         callback = function()
-            vim.treesitter.start()
+          vim.treesitter.start()
         end,
       })
     end
