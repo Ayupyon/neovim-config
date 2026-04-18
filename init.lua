@@ -34,6 +34,7 @@ else
 
   require "options"
   require "tab"
+  require "configs.lsp.init"
 
   vim.schedule(function()
     require "mappings"

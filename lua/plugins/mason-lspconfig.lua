@@ -8,7 +8,7 @@ return {
       { "mason-org/mason.nvim", opts = {} },
     },
     opts = function()
-      local mod = require "configs.lsp.init"
+      -- local mod = require "configs.lsp.init"
       return {}
     end,
   },
