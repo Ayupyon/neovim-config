@@ -99,14 +99,14 @@ local function on_attach(client, bufnr)
   vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, opts)
 
   -- ========== 范围格式化 ==========
-  if client.supports_method "textDocument/rangeFormatting" then
+  if client:supports_method "textDocument/rangeFormatting" then
     vim.keymap.set("x", "<leader>fw", function()
       vim.lsp.buf.format { async = false }
     end, opts)
   end
 
   -- ========== 代码透镜（如果支持）==========
-  if client.supports_method "textDocument/codeLens" then
+  if client:supports_method "textDocument/codeLens" then
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
       group = vim.api.nvim_create_augroup("LspCodeLens_" .. bufnr, {}),
       buffer = bufnr,
@@ -120,7 +120,7 @@ local function on_attach(client, bufnr)
 
   -- ========== 内联提示（Neovim 0.10+）==========
   if vim.lsp.inlay_hint then
-    if client.supports_method "textDocument/inlayHint" then
+    if client:supports_method "textDocument/inlayHint" then
       vim.keymap.set("n", "<leader>ih", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
       end, opts)
