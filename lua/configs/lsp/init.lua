@@ -111,7 +111,7 @@ local function on_attach(client, bufnr)
       group = vim.api.nvim_create_augroup("LspCodeLens_" .. bufnr, {}),
       buffer = bufnr,
       callback = function()
-        vim.lsp.codelens.refresh()
+        vim.lsp.codelens.enable()
       end,
     })
 
