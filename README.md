@@ -5,3 +5,11 @@
 暂时脱离NvChad进行配置
 
 基于neovim v0.12.1
+
+需要安装的依赖（不一定全，使用`:checkhealth`检查）：
+
++ wget
++ curl
++ luarocks
++ fd（sharkdp/fd）
++ tree-sitter-cli
