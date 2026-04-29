@@ -9,15 +9,14 @@ end
 local function file_set_tab(patterns, size)
   vim.api.nvim_create_autocmd("FileType", {
     pattern = patterns,
-    callback = function ()
+    callback = function()
       set_tab(2)
-    end
+    end,
   })
 end
 
-file_set_tab({"lua"}, 2)
+file_set_tab({ "lua", "markdown" }, 2)
 
 local M = {}
 M.set_tab = set_tab
 return M
-
