@@ -174,3 +174,5 @@ for _, name in ipairs(configs) do
   local config = require(prefix .. name)
   vim.lsp.config(config.name, config.config)
 end
+
+vim.lsp.log.set_level("debug")
