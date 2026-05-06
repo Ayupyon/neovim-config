@@ -35,6 +35,7 @@ else
   require "options"
   require "tab"
   require "configs.lsp.init"
+  require "logrotate"
 
   vim.schedule(function()
     require "mappings"
