@@ -133,6 +133,9 @@ local function on_attach(client, bufnr)
   vim.keymap.set("n", "<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts)
+  vim.keymap.set("n", "gh", vim.lsp.buf.hover, { desc = "LSP hover" }) -- 等同于 `K`
+  vim.keymap.set("n", "ge", vim.diagnostic.open_float, { desc = "LSP show diagnostics" }) -- 唤出诊断信息，这个没有默认快捷键，我推荐大家都映射一下
+  vim.keymap.set({ "n", "i", "v" }, "<A-.>", vim.lsp.buf.code_action, { desc = "LSP code action" }) -- 唤出代码操作（由于 Vim/Neovim 中对 `Ctrl-.` 的映射有些问题，这里用 Alt 替代）
 end
 
 local capabilities = get_capabilities()
@@ -175,4 +178,4 @@ for _, name in ipairs(configs) do
   vim.lsp.config(config.name, config.config)
 end
 
-vim.lsp.log.set_level("debug")
+vim.lsp.log.set_level "debug"
