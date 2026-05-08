@@ -16,4 +16,4 @@ map("v", "<C-_>", "gc", { desc = "comment toggle", remap = true })
 -- map("v", "Y", '"+Y', { desc = "yank to system clipboard" })
 
 -- Clear search highlight with ESC
-map("n", "<ESC>", ":nohlsearch<CR>", { desc = "clear search highlight" })
+map("n", "<ESC>", "<cmd> nohlsearch <cr>", { desc = "clear search highlight" })
