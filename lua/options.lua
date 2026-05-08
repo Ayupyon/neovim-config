@@ -5,7 +5,7 @@ opt.exrc = true
 
 --- Windows下使用PowerShell作为默认Shell
 --- Use PowerShell as default Shell on Windows
-if vim.fn.has "win33" == 1 then
+if vim.fn.has "win32" == 1 then
   opt.shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell"
   opt.s.shellcmdflag =
     "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
