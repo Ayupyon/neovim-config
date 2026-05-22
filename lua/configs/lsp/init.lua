@@ -99,19 +99,19 @@ local function on_attach(client, bufnr)
   vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, opts)
 
   -- ========== 范围格式化 ==========
-  if client.supports_method "textDocument/rangeFormatting" then
+  if client:supports_method "textDocument/rangeFormatting" then
     vim.keymap.set("x", "<leader>fw", function()
       vim.lsp.buf.format { async = false }
     end, opts)
   end
 
   -- ========== 代码透镜（如果支持）==========
-  if client.supports_method "textDocument/codeLens" then
+  if client:supports_method "textDocument/codeLens" then
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
       group = vim.api.nvim_create_augroup("LspCodeLens_" .. bufnr, {}),
       buffer = bufnr,
       callback = function()
-        vim.lsp.codelens.refresh()
+        vim.lsp.codelens.enable()
       end,
     })
 
@@ -120,7 +120,7 @@ local function on_attach(client, bufnr)
 
   -- ========== 内联提示（Neovim 0.10+）==========
   if vim.lsp.inlay_hint then
-    if client.supports_method "textDocument/inlayHint" then
+    if client:supports_method "textDocument/inlayHint" then
       vim.keymap.set("n", "<leader>ih", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
       end, opts)
@@ -133,6 +133,9 @@ local function on_attach(client, bufnr)
   vim.keymap.set("n", "<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts)
+  vim.keymap.set("n", "gh", vim.lsp.buf.hover, { desc = "LSP hover" }) -- 等同于 `K`
+  vim.keymap.set("n", "ge", vim.diagnostic.open_float, { desc = "LSP show diagnostics" }) -- 唤出诊断信息，这个没有默认快捷键，我推荐大家都映射一下
+  vim.keymap.set({ "n", "i", "v" }, "<A-.>", vim.lsp.buf.code_action, { desc = "LSP code action" }) -- 唤出代码操作（由于 Vim/Neovim 中对 `Ctrl-.` 的映射有些问题，这里用 Alt 替代）
 end
 
 local capabilities = get_capabilities()
@@ -143,6 +146,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     on_attach(client, bufnr)
   end,
+})
+
+-- workaround for nvim 0.12 removed :Lsp* commands which also removed :LspLog to check lsp log
+-- conveniently.
+vim.api.nvim_create_user_command("LspLog", function()
+  vim.cmd.tabnew(vim.lsp.log.get_filename())
+end, {
+  desc = "Opens the Nvim LSP client log",
 })
 
 vim.lsp.config("*", {
@@ -166,3 +177,5 @@ for _, name in ipairs(configs) do
   local config = require(prefix .. name)
   vim.lsp.config(config.name, config.config)
 end
+
+vim.lsp.log.set_level "debug"
