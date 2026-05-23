@@ -4,7 +4,7 @@
 
 暂时脱离NvChad进行配置
 
-基于neovim v0.12.1
+基于neovim v0.12.2
 
 需要安装的依赖（不一定全，使用`:checkhealth`检查）：
 
