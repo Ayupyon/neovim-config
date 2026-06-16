@@ -4,12 +4,5 @@ return {
   init_options = {
     fallbackFlags = { "-std=c++17" },
   },
-  config = {
-    settings = {
-      clangd = {
-        -- Enable semantic tokens
-        semanticTokens = true,
-      },
-    },
-  },
+  config = {},
 }
