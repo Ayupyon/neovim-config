@@ -6,7 +6,7 @@ return {
       formatterProseWrap = true,
       formatterPrintWidth = 80,
       formatterIndentSize = 2,
-      exportPdf = "onSave",
+      exportPdf = "never",
     }
   }
 }
