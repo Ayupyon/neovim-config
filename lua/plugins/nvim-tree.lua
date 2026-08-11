@@ -12,6 +12,14 @@ return {
           dotfiles = false,
           git_ignored = false,
         },
+
+        update_focused_file = {
+          enable = true,
+          update_root = false,
+        },
+
+        sync_root_with_cwd = true,
+        respect_buf_cwd = true,
       }
 
       vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true, noremap = true })
