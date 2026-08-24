@@ -1,4 +1,6 @@
 return {
-  name = "gopls",
-  config = {},
+  {
+    name = "gopls",
+    config = {},
+  },
 }

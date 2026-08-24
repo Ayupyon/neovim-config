@@ -1,4 +1,6 @@
 return {
-  name = "html",
-  config = {},
+  {
+    name = "html",
+    config = {},
+  },
 }

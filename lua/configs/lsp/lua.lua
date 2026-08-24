@@ -45,8 +45,10 @@ if in_neovim_config_dir then
 end
 
 return {
-  name = "lua_ls",
-  config = {
-    settings = lua_ls_settings,
+  {
+    name = "lua_ls",
+    config = {
+      settings = lua_ls_settings,
+    },
   },
 }

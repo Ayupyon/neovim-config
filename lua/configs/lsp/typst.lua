@@ -1,12 +1,14 @@
 return {
-  name = "tinymist",
-  config = {
-    settings = {
-      formatterMode = "typstyle",
-      formatterProseWrap = true,
-      formatterPrintWidth = 80,
-      formatterIndentSize = 2,
-      exportPdf = "never",
-    }
-  }
+  {
+    name = "tinymist",
+    config = {
+      settings = {
+        formatterMode = "typstyle",
+        formatterProseWrap = true,
+        formatterPrintWidth = 80,
+        formatterIndentSize = 2,
+        exportPdf = "never",
+      },
+    },
+  },
 }

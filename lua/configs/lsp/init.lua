@@ -31,7 +31,7 @@ end, {
   desc = "Opens the Nvim LSP client log",
 })
 
-local configs = {
+local language_configs = {
   "cpp",
   "rust",
   "lua",
@@ -44,10 +44,12 @@ local configs = {
 
 local prefix = "configs.lsp."
 
-for _, name in ipairs(configs) do
-  local config = require(prefix .. name)
-  vim.lsp.config(config.name, config.config)
-  vim.lsp.enable(config.name)
+for _, name in ipairs(language_configs) do
+  local language_config = require(prefix .. name)
+  for _, lsp_config in ipairs(language_config) do
+    vim.lsp.config(lsp_config.name, lsp_config.config)
+    vim.lsp.enable(lsp_config.name)
+  end
 end
 
-vim.lsp.log.set_level("debug")
+vim.lsp.log.set_level "debug"

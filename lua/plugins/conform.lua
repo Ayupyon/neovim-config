@@ -9,6 +9,14 @@ return {
         -- python = { "isort", "black" },
         -- You can customize some of the format options for the filetype (:help conform.format)
         rust = { "rustfmt", lsp_format = "fallback" },
+        python = {
+          -- To fix auto-fixable lint errors.
+          "ruff_fix",
+          -- To run the Ruff formatter.
+          "ruff_format",
+          -- To organize the imports.
+          "ruff_organize_imports",
+        },
         -- Conform will run the first available formatter
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
       },
@@ -23,7 +31,7 @@ return {
           timeout_ms = 2000,
           lsp_format = "fallback",
         }
-      end
+      end,
     },
   },
 }

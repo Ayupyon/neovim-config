@@ -1,4 +1,6 @@
 return {
-  name = "cssls",
-  config = {},
+  {
+    name = "cssls",
+    config = {},
+  },
 }
