@@ -51,5 +51,3 @@ for _, name in ipairs(language_configs) do
     vim.lsp.enable(lsp_config.name)
   end
 end
-
-vim.lsp.log.set_level "debug"
